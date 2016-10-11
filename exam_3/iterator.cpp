@@ -27,6 +27,6 @@ int main() {
 
     auto it = v.begin();
     //it -> the baseAddr of header element
-    cout << * it.base() << endl;
+    cout << *it.base() << endl;
     return 0;
 }
