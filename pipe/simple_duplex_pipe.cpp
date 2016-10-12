@@ -22,6 +22,7 @@ int main() {
     if ((pid = fork()) == 0) {
         close(pipe_in[0]);
         close(pipe_out[1]);
+        //子进程中关掉负责写入管道的读端和负责读出管道的写端
         int res11 = dup2(pipe_in[1], STDOUT_FILENO);
         printf("res11:%d\n", res11);
         int res22 = dup2(pipe_out[0], STDIN_FILENO);
