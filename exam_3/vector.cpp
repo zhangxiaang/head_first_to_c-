@@ -51,5 +51,8 @@ int main() {
             ++scores[grade / 10];//change the val of the 'index'
         }
     }
+
+    //迭代器的运算
+
     return 0;
 }
