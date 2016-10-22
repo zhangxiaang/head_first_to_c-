@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <vector>
 
 using std::string;
 
@@ -37,8 +38,29 @@ void iteratorchar(const char *beg, int leng) {
 
     }
 }
-//合并两个char
 
+void initArrayWithVector(int *p, int size) {
+    int a[size];
+    for (int i = 0; i < size; ++i) {
+        a[i] = *p;
+        ++p;
+    }
+
+    for (int j = 0; j < size; ++j) {
+        std::cout << a[j] << std::endl;
+    }
+}
+
+void initVectorWithArray(int *p, int size) {
+    std::vector<int> vector;
+    for (int i = 0; i < size; ++i) {
+        vector.push_back(*p);
+        ++p;
+    }
+    for (int j = 0; j < vector.size(); ++j) {
+        std::cout << vector.operator[](j) << std::endl;
+    }
+}
 
 int main() {
     char ch[] = {'a', 'b', '+', '+'};
@@ -65,7 +87,7 @@ int main() {
 //    std::cout << &ch1 + &ch2 << std::endl;
     char temp = 's';
     char *temptr = &temp;
-    strcat(temptr, ch1);//相对来讲比较危险
+//    strcat(temptr, ch1);//相对来讲比较危险
 
 //    std::cout << temp << std::endl;
 //    std::cout << ch1 << std::endl;
@@ -79,7 +101,17 @@ int main() {
     char x = 'x';
     char *a = &x;
 
-    strcat(a, ch2);//给某一个char添加const char*
-    std::cout << a << std::endl;
+
+    int ass[] = {1, 2, 3, 4, 5};
+
+    initVectorWithArray(ass, sizeof(ass) / sizeof(int));
+
+    std::vector<int> vector;
+    vector.push_back(1);
+    vector.push_back(11);
+    vector.push_back(111);
+    vector.push_back(1111);
+    vector.push_back(11111);
+    initArrayWithVector(vector.data(), vector.size());
     return 1;
 }
