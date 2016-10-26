@@ -33,6 +33,7 @@ int main() {
     vector<string> v;//相当于string本身就是一个iter vector 是一个iter的容器
     v.push_back(val);
     v.push_back(val1);
+
     v.push_back(val2);
     v.push_back(val3);
     v.push_back(val4);

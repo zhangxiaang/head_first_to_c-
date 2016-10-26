@@ -11,15 +11,30 @@ using std::cin;
 using std::vector;
 
 
-bool compare(auto s1, auto s2, auto s3) {
-    for (; s1 != s2; ++s1, ++s2) {
+void array2vec(int *beg, int length) {
+    vector<int> target;
+    for (int i = 0; i < length; ++i) {
+        target.push_back(*(beg++));
+    }
 
+    //print out vector
+    std::cout << *target.data() << std::endl;
+    std::cout << *(target.data() + 1) << std::endl;
+    //space存储的都是0
+    std::cout << *(target.data() + 2) << std::endl;
+    std::cout << *(target.data() + 3) << std::endl;
+    std::cout << *(target.data() + 4) << std::endl;
+}
+
+void vector2array(int *pointer, int size) {
+    for (int i = 0; i < size; ++i) {
+        std::cout << *(pointer + i) << std::endl;
     }
 }
 
 int main() {
-    int a[] = {1, 2};
-    int (*P)[2] = &a;//P指向一个含2个char的数组
+    int a[] = {1, 2, 3, 3};
+    int (*P)[4] = &a;//P指向一个含2个char的数组
 
     vector<int> int_v(2);
     for (int val : a) {
@@ -66,10 +81,17 @@ int main() {
 
     int aaa[] = {1, 2};
     int bbb[] = {1, 2};
+
 //    aaa = bbb;//bbb意味着数组的首元素的地址
     if (std::equal(std::begin(aaa), std::end(aaa), std::begin(bbb))) {
         printf("equal\n");
     } else
         printf("noooo\n");
+
+    array2vec(aaa, sizeof(aaa) / sizeof(int));
+
+    //传入第一个data->pointer
+    vector2array(int_v.data(), int_v.size());
+
     return 1;
 }
